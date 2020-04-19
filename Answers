@@ -27,7 +27,7 @@ docker login
 docker pull dockerashu/ckad:v2
 docker run -d --name aninditac3q3 -p 1204:1122 dockerashu/ckad:v2
 vim Dockerfile
-FROM FROM nginx
+FROM nginx
 # I am using a web server from Dockerhub
 MAINTAINER aninditamishra6@gmail.com
 COPY webapp1 /usr/share/nginx/html/
