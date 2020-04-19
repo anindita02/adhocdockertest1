@@ -1,0 +1,61 @@
+##q1
+#answer
+FROM alpine
+MAINTAINER aninditamishra6@gmail.com
+ENTRYPOINT date +%T
+docker build -t  alpine:anindita
+docker run -d --name aninditac1q1 alpine:anindita
+docker start aninditac1q1
+docker run -d --name aninditac1q1 adhoc:anindita > question1.txt
+
+
+
+##q2
+#answer
+docker build -t adhoc:anindita https://github.com/redashu/summer2020dockertest.git
+docker run -d --name aninditac2q2 -p 1333:80 adhoc:anindita
+docker login
+docker tag adhoc:anindita  anindita06/adhoc:anindita
+docker push anindita06/adhoc:anindita
+docker start aninditac2q2
+docker run -d --name aninditac2q2 adhoc:anindita sh
+cal 2020 >question1.txt
+
+##q3
+#answer
+docker login
+docker pull dockerashu/ckad:v2
+docker run -d --name aninditac3q3 -p 1204:1122 dockerashu/ckad:v2
+vim Dockerfile
+FROM FROM nginx
+# I am using a web server from Dockerhub
+MAINTAINER aninditamishra6@gmail.com
+COPY webapp1 /usr/share/nginx/html/
+# copy will only copy all the content of web app and not the folder
+# location folder 
+# /usr/share/nginx/html is the Documentroot for Niginx webserver
+# Documentroot means location from where webserver will read code
+EXPOSE 1122
+# this will be port of Nginx webserver
+
+##q4
+#answer
+vim Dockerfile
+FROM centos:centos6
+RUN yum install httpd -y
+COPY webapp1 /var/www/html/
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
+
+cd .\Desktop
+cd .\webapp1
+clone https://github.com/redashu/beginner-html-site-styled.git
+docker build -t anindita:q4
+docker run -d --name aninditac4q4 -p 1500:80 anindita:q4
+
+
+##q5
+#answer
+docker volume create aninditaq5
+docker run -it --name aninditac5q5 -v aninditaq5:/myimpdata alpine 
+docker run -it --name aninditac6q5 -v /etc:/passwd alpine
